@@ -1,6 +1,387 @@
+import golosinas.*
+import sabores.*
 
-test "testX" {
+describe "Test de bombon"{
+	
+	method darDosMordiscos() {
+		bombon.recibirMordisco()
+		bombon.recibirMordisco()
+	}
+	
+	test "peso inicial es de 15" {
+		assert.equals(bombon.peso(), 15)
+	}
+	
+	test "precio inicial es de 5$" {
+		assert.equals(bombon.precio(), 5)
+	}
+	
+	test "gusto inicial es de frutilla" {
+		assert.equals(bombon.sabor(), frutilla)
+	}
+	
+	test "es libre de gluten" {
+		assert.notThat(bombon.contienGluten())
+	}
+	
+	test "al recibir dos mordiscos se debe esperar un peso de 7.8" {
+		self.darDosMordiscos()
+		assert.equals(bombon.peso(), 7.8)
+	}
+}
 
-	assert.that(true)
+describe "Test de alfajor"{
+	
+	method darDosMordiscos() {
+		alfajor.recibirMordisco()
+		alfajor.recibirMordisco()
+	}
+	
+	test "peso inicial es de 300" {
+		assert.equals(alfajor.peso(), 300)
+	}
+	
+	test "precio inicial es de 12$" {
+		assert.equals(alfajor.precio(), 12)
+	}
+	
+	test "gusto inicial es de chocolate" {
+		assert.equals(alfajor.sabor(), chocolate)
+	}
+	
+	test "no es libre de gluten" {
+		assert.that(alfajor.contienGluten())
+	}
+	
+	test "al recibir dos mordiscos se debe esperar un peso de 192" {
+		self.darDosMordiscos()
+		assert.equals(alfajor.peso(), 192)
+	}
+}
 
+describe "Test de caramelo"{
+	
+	method darDosMordiscos() {
+		caramelo.recibirMordisco()
+		caramelo.recibirMordisco()
+	}
+	
+	test "peso inicial es de 5" {
+		assert.equals(caramelo.peso(), 5)
+	}
+	
+	test "precio inicial es de 1$" {
+		assert.equals(caramelo.precio(), 1)
+	}
+	
+	test "gusto inicial es de frutilla" {
+		assert.equals(caramelo.sabor(), frutilla)
+	}
+	
+	test "es libre de gluten" {
+		assert.notThat(caramelo.contienGluten())
+	}
+	
+	test "al recibir dos mordiscos se debe esperar un peso de 3" {
+		self.darDosMordiscos()
+		assert.equals(caramelo.peso(), 3)
+	}
+}
+
+describe "Test de chupetin" {
+	
+	method darDosMordiscos() {
+		chupetin.recibirMordisco()
+		chupetin.recibirMordisco()
+	}
+	
+	test "peso inicial es de 7" {
+		assert.equals(chupetin.peso(), 7)
+	}
+	
+	test "precio inicial es de 2$" {
+		assert.equals(chupetin.precio(), 2)
+	}
+	
+	test "gusto inicial es de naranja" {
+		assert.equals(chupetin.sabor(), naranja)
+	}
+	
+	test "es libre de gluten" {
+		assert.notThat(chupetin.contienGluten())
+	}
+	
+	test "al recibir dos mordiscos se debe esperar un peso de 5.67" {
+		self.darDosMordiscos()
+		assert.equals(chupetin.peso(), 5.67)
+	}
+}
+
+describe "Test de oblea" {
+	
+	method darTresMordiscos() {
+		oblea.recibirMordisco()
+		oblea.recibirMordisco()
+		oblea.recibirMordisco()
+	}
+	
+	test "peso inicial es de 250" {
+		assert.equals(oblea.peso(), 250)
+	}
+	
+	test "precio inicial es de 5$" {
+		assert.equals(oblea.precio(), 5)
+	}
+	
+	test "gusto inicial es de vainilla" {
+		assert.equals(oblea.sabor(), vainilla)
+	}
+	
+	test "no es libre de gluten" {
+		assert.that(oblea.contienGluten())
+	}
+	
+	test "al recibir tres mordiscos se debe esperar un peso de 15.625" {
+		self.darTresMordiscos()
+		assert.equals(oblea.peso(), 15.625)
+	}
+}
+
+describe "Test de chocolatin de 40g" {
+	
+	method asignarUnPesoDe40() {
+		chocolatin.asignarPeso(40)
+	}
+	
+	method darDosMordiscos() {
+		chocolatin.recibirMordisco()
+		chocolatin.recibirMordisco()
+	}
+	
+	test "peso inicial es de 40" {
+		self.asignarUnPesoDe40()
+		assert.equals(chocolatin.peso(), 40)
+	}
+	
+	test "precio inicial de 40g seria 20$" {
+		self.asignarUnPesoDe40()
+		assert.equals(chocolatin.precio(), 20)
+	}
+	
+	test "gusto inicial es de chocolate" {
+		assert.equals(chocolatin.sabor(), chocolate)
+	}
+	
+	test "no es libre de gluten" {
+		assert.that(chocolatin.contienGluten())
+	}
+	
+	test "al recibir dos mordiscos se debe esperar un peso de 36" {
+		self.asignarUnPesoDe40()
+		self.darDosMordiscos()
+		assert.equals(chocolatin.peso(), 36)
+	}
+}
+
+describe "Test de chocolatin de 100g" {
+	method asignarUnPesoDe100() {
+		chocolatin.asignarPeso(100)
+	}
+	
+	method darDosMordiscos() {
+		chocolatin.recibirMordisco()
+		chocolatin.recibirMordisco()
+	}
+	
+	test "peso inicial es de 100" {
+		self.asignarUnPesoDe100()
+		assert.equals(chocolatin.peso(), 100)
+	}
+	
+	test "precio inicial de 100g seria 50$" {
+		self.asignarUnPesoDe100()
+		assert.equals(chocolatin.precio(), 50)
+	}
+	
+	test "gusto inicial es de chocolate" {
+		assert.equals(chocolatin.sabor(), chocolate)
+	}
+	
+	test "no es libre de gluten" {
+		assert.that(chocolatin.contienGluten())
+	}
+	
+	test "al recibir dos mordiscos se debe esperar un peso de 96" {
+		self.asignarUnPesoDe100()
+		self.darDosMordiscos()
+		assert.equals(chocolatin.peso(), 96)
+	}
+}
+
+describe "Test de pastilla de tuti frutti libre de gluten" {
+	
+	method pastillaLibreDeGluten() {
+		pastillaTuttiFrutti.cambiarContienGluten()
+	}
+	
+	method darDosMordiscos() {
+		pastillaTuttiFrutti.recibirMordisco()
+		pastillaTuttiFrutti.recibirMordisco()
+	}
+	
+	test "peso inicial es de 5g" {
+		assert.equals(pastillaTuttiFrutti.peso(), 5)
+	}
+	test "precio inicial siendo libre de gluten es 7" {
+		self.pastillaLibreDeGluten()
+		assert.equals(pastillaTuttiFrutti.precio(), 7)
+	}
+	test "gusto inicial es de frutilla" {
+		assert.equals(pastillaTuttiFrutti.sabor(), frutilla)
+	}
+	test "es libre de gluten" {
+		assert.that(pastillaTuttiFrutti.contienGluten())
+	}
+	
+	test "al recibir dos mordiscos se debe esperar un peso de 5" {
+		self.darDosMordiscos()
+		assert.equals(pastillaTuttiFrutti.peso(), 3)
+	}
+}
+
+describe "Test de pastilla de tuti frutti que contiene de gluten" {
+	
+	method darDosMordiscos() {
+		pastillaTuttiFrutti.recibirMordisco()
+		pastillaTuttiFrutti.recibirMordisco()
+	}
+	
+	test "peso inicial es de 5g" {
+		assert.equals(pastillaTuttiFrutti.peso(), 5)
+	}
+	test "precio inicial siendo libre de gluten es 10" {
+		assert.equals(pastillaTuttiFrutti.precio(), 10)
+	}
+	test "gusto inicial es de frutilla" {
+		assert.equals(pastillaTuttiFrutti.sabor(), frutilla)
+	}
+	test "es libre de gluten" {
+		assert.that(pastillaTuttiFrutti.contienGluten())
+	}
+	
+	test "al recibir dos mordiscos se debe esperar un peso de 5" {
+		self.darDosMordiscos()
+		assert.equals(pastillaTuttiFrutti.peso(), 3)
+	}
+}
+
+describe "Tests de golosina baniada de pastilla tutti-frutti" {
+	
+	method asignarPastillaTuttiFrutti() {
+		golosinaBaniada.asignarGolosinaBase(pastillaTuttiFrutti)
+	}
+	
+	method darDosMordiscos() {
+		golosinaBaniada.recibirMordisco()
+		golosinaBaniada.recibirMordisco()
+	}
+	
+	test "peso inicial es de 9g" {
+		self.asignarPastillaTuttiFrutti()
+		assert.equals(golosinaBaniada.peso(), 9)
+	}
+	test "precio inicial, conteniendo gluten, de la pastilla es de 12" {
+		self.asignarPastillaTuttiFrutti()
+		assert.equals(golosinaBaniada.precio(), 12)
+	}
+	test "gusto inicila es de frutilla" {
+		self.asignarPastillaTuttiFrutti()
+		assert.equals(golosinaBaniada.sabor(), frutilla)
+	}
+	test "contiene gluten" {
+		self.asignarPastillaTuttiFrutti()
+		assert.that(golosinaBaniada.contienGluten())
+	}
+	test "al recibir dos mordiscos se deb esperar un peso de 3" {
+		self.asignarPastillaTuttiFrutti()
+		self.darDosMordiscos()
+		assert.equals(golosinaBaniada.peso(), 3)
+	}
+}
+
+describe "Tests de golosina baniada de chocolatin de 40g" {
+	
+	method asignarUnPesoDe40() {
+		chocolatin.asignarPeso(40)
+	}
+	
+	method asignarChocolatinDe40g() {
+		golosinaBaniada.asignarGolosinaBase(chocolatin)
+	}
+	
+	method darDosMordiscos() {
+		golosinaBaniada.recibirMordisco()
+		golosinaBaniada.recibirMordisco()
+	}
+	
+	test "peso inicial es de 44g" {
+		self.asignarUnPesoDe40()
+		self.asignarChocolatinDe40g()
+		assert.equals(golosinaBaniada.peso(), 44)
+	}
+	test "precio inicial es 22" {
+		self.asignarUnPesoDe40()
+		self.asignarChocolatinDe40g()
+		assert.equals(golosinaBaniada.precio(), 22)
+	}
+	test "gusto inicila es de chocolate" {
+		self.asignarUnPesoDe40()
+		self.asignarChocolatinDe40g()
+		assert.equals(golosinaBaniada.sabor(), chocolate)
+	}
+	test "contiene gluten" {
+		self.asignarUnPesoDe40()
+		self.asignarChocolatinDe40g()
+		assert.that(golosinaBaniada.contienGluten())
+	}
+	test "al recibir dos mordiscos se debe esperar un peso de 36" {
+		self.asignarUnPesoDe40()
+		self.asignarChocolatinDe40g()
+		self.darDosMordiscos()
+		assert.equals(golosinaBaniada.peso(), 36)
+	}
+}
+
+describe "Tests de golosina baniada de chupetin" {
+	
+	method asignarChupetin() {
+		golosinaBaniada.asignarGolosinaBase(chupetin)
+	}
+	
+	method darDosMordiscos() {
+		golosinaBaniada.recibirMordisco()
+		golosinaBaniada.recibirMordisco()
+	}
+	
+	test "peso inicial es de 11g" {
+		self.asignarChupetin()
+		assert.equals(golosinaBaniada.peso(), 11)
+	}
+	test "precio inicial es 4" {
+		self.asignarChupetin()
+		assert.equals(golosinaBaniada.precio(), 4)
+	}
+	test "gusto inicila es de chocolate" {
+		self.asignarChupetin()
+		assert.equals(golosinaBaniada.sabor(), naranja)
+	}
+	test "es libre de gluten" {
+		self.asignarChupetin()
+		assert.notThat(golosinaBaniada.contienGluten())
+	}
+	test "al recibir dos mordiscos se deb esperar un peso de 5.67" {
+		self.asignarChupetin()
+		self.darDosMordiscos()
+		assert.equals(golosinaBaniada.peso(), 5.67)
+	}
 }

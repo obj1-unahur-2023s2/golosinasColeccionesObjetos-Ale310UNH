@@ -1,6 +1,76 @@
+import mariano.*
+import golosinas.*
+import sabores.*
 
-test "testX" {
-
-	assert.that(true)
-
+describe "test de mariano" {
+	method comprarVariasGolosinas() {
+		chocolatin.asignarPeso(40)
+		
+		mariano.comprar(chocolatin)
+		mariano.comprar(caramelo)
+		mariano.comprar(bombon)
+	}
+	
+	test "la bolsa de golosinas de mariano tiene un chocolatin, un caramelo y un bombon" {
+		self.comprarVariasGolosinas()
+		assert.equals(mariano.bolsaDeGolosinas(), [chocolatin, caramelo, bombon])
+	}
+	
+	test "desechar caramelo quita de la bolsa a caramelo" {
+		self.comprarVariasGolosinas()
+		mariano.desechar(caramelo)
+		
+		assert.equals(mariano.bolsaDeGolosinas(), [chocolatin, bombon])
+	}
+	
+	test "la cantidad de golosinas de la bolsa es 3" {
+		self.comprarVariasGolosinas()
+		assert.equals(mariano.cantidadDeGolosinas(), 3)
+	}
+	
+	test "se verifica que teien la golosina caramelo" {
+		self.comprarVariasGolosinas()
+		assert.that(mariano.tieneLaGolosina(caramelo))
+	}
+	
+	test "al probar cada una de las golosinas, el peso del bombon es de 11" {
+		self.comprarVariasGolosinas()
+		mariano.probarGolosinas()
+		assert.equals(mariano.bolsaDeGolosinas().get(2).peso(), 11)
+	}
+	
+	test "en su bolsa hay al menos una golosina Sin TACC" {
+		self.comprarVariasGolosinas()
+		assert.that(mariano.hayGolosinaSinTACC())
+	}
+	
+	test "en su bolsa no hay precios cuidados" {
+		self.comprarVariasGolosinas()
+		assert.notThat(mariano.preciosCuidados())
+	}
+	
+	test "buscar la golosina sabor chocolate devuelve a chocolatin" {
+		self.comprarVariasGolosinas()
+		assert.equals(mariano.golosinaDeSabor(chocolate), chocolatin)
+	}
+	
+	test "filtar la bolsa por sabor frutilla devuelvo caramelo y bombon" {
+		self.comprarVariasGolosinas()
+		assert.equals(mariano.golosinasDeSabor(frutilla), [caramelo, bombon])
+	}
+	
+	test "los sabores de golosians que hay en la bolsa son chocolate y frutilla" {
+		self.comprarVariasGolosinas()
+		assert.equals(mariano.sabores(), #{frutilla, chocolate})
+	}
+	
+	test "la golosina mas cara de la bolsa es el chocolatin q es de 20" {
+		self.comprarVariasGolosinas()
+		assert.equals(mariano.golosinaMasCara(), 20)
+	}
+	
+	test "el peso total de las golosinas de las bolsa es de 60" {
+		self.comprarVariasGolosinas()
+		assert.equals(mariano.pesoGolosinas(), 60)
+	}
 }
