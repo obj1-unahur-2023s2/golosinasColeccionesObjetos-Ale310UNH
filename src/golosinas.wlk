@@ -108,23 +108,19 @@ object golosinaBaniada {
 
 
 object pastillaTuttiFrutti {
-	var peso = 5
-	var contienGluten = true
+	var contienGluten = false
 	const sabores = [frutilla, chocolate, naranja]
+	var sabor = 0
 	
 	method precio() {
 		if(contienGluten) {return 10} else {return 7}
 	}
-	method peso() = peso
-	method sabor() = sabores.get(0)
+	method sabor() = sabores.get(sabor % 3)
 	method contienGluten() = contienGluten
 	
 	method recibirMordisco() {
-		peso = 0.max(peso - 1)
-		/*aca falta el que cambie de sabor*/
+		sabor += 1
 	}
 		
-	method cambiarContienGluten() {
-		contienGluten = not contienGluten
-	}
+	method contienGluten(valor) {contienGluten = valor}
 }
